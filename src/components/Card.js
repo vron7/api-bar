@@ -1,14 +1,16 @@
 import React from 'react';
+import SpeechBubble from './SpeechBubble';
 
-const Card = ({name, email, id}) => { //destructing
+const Card = ({name, id, joke}) => { //destructing
     return(
-        <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5">
-            <img alt='avatar' src={`https://robohash.org/${id}?200x200`}/>
-            <div>
-                <h2>{name}</h2>
-                <p>{email}</p>
+        <div className="tc bg-light-green br3 pa3 ma2 bw2 shadow-5">
+            <SpeechBubble text={joke} name={name} />
+            <img alt='avatar' src={`https://robohash.org/${id}?size=200x200`}/>
+            <div className="bar-top">
+                <div className="beer"></div>
             </div>
         </div>
+        
     )
 }
 

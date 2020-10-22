@@ -2,7 +2,10 @@ import {
     CHANGE_SEARCH_FIELD,
     REQUEST_ROBOTS_PENDING,
     REQUEST_ROBOTS_SUCCESS,
-    REQUEST_ROBOTS_FAILED
+    REQUEST_ROBOTS_FAILED,
+    REQUEST_JOKES_PENDING,
+    REQUEST_JOKES_SUCCESS,
+    REQUEST_JOKES_FAILED
 
 } from './constants'
 const initialStateSearch = {
@@ -33,6 +36,28 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
             return Object.assign({}, state, {robots: action.payload, isPending: false});
 
         case REQUEST_ROBOTS_FAILED:
+            return Object.assign({}, state, {error: action.payload, isPending: false});
+
+        default:
+            return state;
+    }
+}
+
+const initialStateJokes = {
+    isPending: false,
+    joke: "...",
+    error: ''
+}
+
+export const requestJokes = (state = initialStateJokes, action = {}) => {
+    switch(action.type){
+        case REQUEST_JOKES_PENDING:
+            return Object.assign({}, state, {isPending:true});
+
+        case REQUEST_JOKES_SUCCESS:
+            return Object.assign({}, state, {joke: action.payload, isPending: false});
+
+        case REQUEST_JOKES_FAILED:
             return Object.assign({}, state, {error: action.payload, isPending: false});
 
         default:
