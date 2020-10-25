@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/api-bar/static/css/main.8f9f4115.chunk.css",
+    "main.js": "/api-bar/static/js/main.32b081a1.chunk.js",
+    "main.js.map": "/api-bar/static/js/main.32b081a1.chunk.js.map",
+    "runtime-main.js": "/api-bar/static/js/runtime-main.f0a57d8b.js",
+    "runtime-main.js.map": "/api-bar/static/js/runtime-main.f0a57d8b.js.map",
+    "static/css/2.3c03f26f.chunk.css": "/api-bar/static/css/2.3c03f26f.chunk.css",
+    "static/js/2.1c7df07e.chunk.js": "/api-bar/static/js/2.1c7df07e.chunk.js",
+    "static/js/2.1c7df07e.chunk.js.map": "/api-bar/static/js/2.1c7df07e.chunk.js.map",
+    "index.html": "/api-bar/index.html",
+    "precache-manifest.2fb807a093c7d5e196e7da263f1a676c.js": "/api-bar/precache-manifest.2fb807a093c7d5e196e7da263f1a676c.js",
+    "service-worker.js": "/api-bar/service-worker.js",
+    "static/css/2.3c03f26f.chunk.css.map": "/api-bar/static/css/2.3c03f26f.chunk.css.map",
+    "static/css/main.8f9f4115.chunk.css.map": "/api-bar/static/css/main.8f9f4115.chunk.css.map",
+    "static/js/2.1c7df07e.chunk.js.LICENSE.txt": "/api-bar/static/js/2.1c7df07e.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/api-bar/static/media/SEGA.12a3db8b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f0a57d8b.js",
+    "static/css/2.3c03f26f.chunk.css",
+    "static/js/2.1c7df07e.chunk.js",
+    "static/css/main.8f9f4115.chunk.css",
+    "static/js/main.32b081a1.chunk.js"
+  ]
+}
