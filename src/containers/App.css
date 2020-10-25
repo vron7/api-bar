@@ -98,3 +98,16 @@ h1{
     top:-50%;
 
 }
+@media only screen and (orientation: portrait) and (min-aspect-ratio: 375/667){
+  h1.f1 {
+    font-size:2rem;
+  }
+}
+@media only screen and (orientation: portrait) and (min-aspect-ratio: 320/568){
+  h1.f1 {
+    font-size: 1rem;
+  }
+  .barman{
+    max-width: 50%;
+  }
+}

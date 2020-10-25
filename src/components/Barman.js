@@ -4,7 +4,7 @@ import SpeechBubble from './SpeechBubble';
 const Barman = ({id}) => { //destructing
     return(
         <div className="tc">
-            <img alt='avatar' src={`https://robohash.org/${id}?size=200x200`}/>
+            <img className="barman" alt='avatar' src={`https://robohash.org/${id}?size=200x200`}/>
             <div className="bar-top">
                 <div className="beer"></div>
             </div>
