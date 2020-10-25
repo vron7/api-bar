@@ -14,6 +14,10 @@ h1{
     max-width: 40em;
     margin: 0 auto;
 }
+.bubble-img{
+  max-height:180px;
+  border-radius: 20px;
+}
 
 @-webkit-keyframes scale-up-center {
     0% {
@@ -81,6 +85,7 @@ h1{
     position: relative;
     box-shadow: 0px 20px 0px darkgray;
     margin-bottom: 20px;
+    border: 2px solid darkseagreen;
 }
 .beer{
     position: absolute;

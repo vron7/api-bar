@@ -24,6 +24,12 @@ const SpeechBubble = ({text, name, isWaiting}) => { //destructing
     }  else{
         reanimateBubble();
     }
+  
+    if(text.search("purr") !== -1){
+        return(
+            <img className="bubble-img shadow-3" src={text}/>
+        )
+    }
     
     if(text) {        
         return(

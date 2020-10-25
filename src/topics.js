@@ -2,7 +2,8 @@ const enumTopics = {
     JOKE: 'joke',
     QUOTE: 'quote',
     FACTS: 'facts',
-    CATS: 'cats'
+    CATS: 'cats',
+    INSULT: 'insult'
 
 }
 export const topics = [
@@ -21,6 +22,10 @@ export const topics = [
     {
         id: enumTopics.CATS,
         name: 'Meow'
+    },
+    {
+        id: enumTopics.INSULT,
+        name: 'Cat image'
     }
 ];
 
@@ -39,6 +44,9 @@ export const getUriForTopic = (topic) => {
 
         case enumTopics.CATS:
             return 'https://meowfacts.herokuapp.com/';
+
+        case enumTopics.INSULT:
+            return 'https://aws.random.cat/meow';
 
         default:
             return '';
@@ -60,6 +68,9 @@ export const convertDataToWisdom = (topic, data) => {
 
         case enumTopics.CATS:
             return data.data[0];
+
+        case enumTopics.INSULT:
+            return data.file;
 
         default:
             return '';
