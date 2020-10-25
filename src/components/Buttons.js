@@ -3,7 +3,7 @@ import Button from './Button';
 
 const Buttons = ({buttons, onClick}) => {
     return(
-        <div>{
+        <div className="tc bg-washed-yellow br3 pa3 ma2 bw2 shadow-5">{
             buttons.map((button, i) => {
                 return (
                     <Button 

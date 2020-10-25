@@ -32,7 +32,7 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
 
 
 const initialStateWisdom = {
-    isPending: false,
+    isWaiting: false,
     wisdom: '',
     error: ''
 }
@@ -40,13 +40,13 @@ const initialStateWisdom = {
 export const requestWisdom = (state = initialStateWisdom, action = {}) => {
     switch(action.type){
         case REQUEST_TOPIC_PENDING:
-            return Object.assign({}, state, {isPending:true});
+            return Object.assign({}, state, {isWaiting:true});
 
         case REQUEST_TOPIC_SUCCESS:
-            return Object.assign({}, state, {wisdom: action.payload, isPending: false});
+            return Object.assign({}, state, {wisdom: action.payload, isWaiting: false});
 
         case REQUEST_TOPIC_FAILED:
-            return Object.assign({}, state, {error: action.payload, isPending: false});
+            return Object.assign({}, state, {error: action.payload, isWaiting: false});
 
         default:
             return state;

@@ -1,8 +1,30 @@
 import React from 'react';
 
-const SpeechBubble = ({text, name}) => { //destructing
-    let className = "chat-box br4 pa3 bg-white shadow-3 fade-in slide-top"
-    console.log('dbg speech', text)
+const reanimateBubble = () => {
+    const el = document.querySelector(".bubble");
+    if(!el)
+        return
+
+    el.classList.remove("scale-up-center");
+    el.classList.remove("scale-out-center");
+    void el.offsetWidth;
+    el.classList.add("scale-up-center");
+}
+const fadeOutbubble = () =>{
+    const el = document.querySelector(".bubble");
+    if(!el)
+        return
+    el.classList.add("scale-out-center"); 
+}
+const SpeechBubble = ({text, name, isWaiting}) => { //destructing
+    let className = "bubble chat-box br4 pa3 bg-white shadow-3"
+
+    if(isWaiting){
+        fadeOutbubble();
+    }  else{
+        reanimateBubble();
+    }
+    
     if(text) {        
         return(
             <div className={className}>
