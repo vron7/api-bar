@@ -8,8 +8,10 @@ const Buttons = ({buttons, onClick}) => {
                 return (
                     <Button 
                         key={i}
+                        idx={i}
                         name={button.name}
-                        getJokes={onClick} 
+                        id={button.id}
+                        getSomething={onClick} 
                         />
                 );
             })

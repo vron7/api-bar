@@ -1,25 +1,12 @@
 import { 
-    CHANGE_SEARCH_FIELD,
     REQUEST_ROBOTS_PENDING,
     REQUEST_ROBOTS_SUCCESS,
     REQUEST_ROBOTS_FAILED,
-    REQUEST_JOKES_PENDING,
-    REQUEST_JOKES_SUCCESS,
-    REQUEST_JOKES_FAILED
+    REQUEST_TOPIC_PENDING,
+    REQUEST_TOPIC_SUCCESS,
+    REQUEST_TOPIC_FAILED
 
 } from './constants'
-const initialStateSearch = {
-    searchField: ''
-}
-
-export const searchRobots = (state = initialStateSearch, action = {}) => {
-    switch(action.type){
-        case CHANGE_SEARCH_FIELD:
-            return Object.assign({}, state, {searchField: action.payload});
-        default:
-            return state;
-    }
-}
 
 const initialStateRobots = {
     isPending: false,
@@ -43,21 +30,22 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
     }
 }
 
-const initialStateJokes = {
+
+const initialStateWisdom = {
     isPending: false,
-    joke: "...",
+    wisdom: '',
     error: ''
 }
 
-export const requestJokes = (state = initialStateJokes, action = {}) => {
+export const requestWisdom = (state = initialStateWisdom, action = {}) => {
     switch(action.type){
-        case REQUEST_JOKES_PENDING:
+        case REQUEST_TOPIC_PENDING:
             return Object.assign({}, state, {isPending:true});
 
-        case REQUEST_JOKES_SUCCESS:
-            return Object.assign({}, state, {joke: action.payload, isPending: false});
+        case REQUEST_TOPIC_SUCCESS:
+            return Object.assign({}, state, {wisdom: action.payload, isPending: false});
 
-        case REQUEST_JOKES_FAILED:
+        case REQUEST_TOPIC_FAILED:
             return Object.assign({}, state, {error: action.payload, isPending: false});
 
         default:

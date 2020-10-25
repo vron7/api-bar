@@ -1,33 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import Cards from '../components/Cards';
 import Buttons from '../components/Buttons';
-import Card from '../components/Card';
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll'
+import Barman from '../components/Barman';
 import ErrorBoundry from '../components/ErrorBoundry'
-// import {robots} from './robots'
 import './App.css'
-
-import { requestRobots, setSearchField, requestJokes } from '../actions'
-const buttons = [
-        {name:"Jokes"}
-    ];
+import {topics} from '../topics'
+import { requestRobots, requestJokes, requestWisdom } from '../actions'
+let user;
 
 const mapStateToProps = state => {
+    console.log('dbg mapStateToProps', state)
     return {
-        searchField: state.searchRobots.searchField,
         robots: state.requestRobots.robots,
         isPending: state.requestRobots.isPending,
         error: state.requestRobots.error,
-        joke: state.requestJokes.joke
+        wisdom: state.requestWisdom.wisdom
+
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
         onRequestRobots: () => dispatch(requestRobots()),
-        onRequestJokes: () => dispatch(requestJokes())
+        onRequestWisdom: params => dispatch(requestWisdom(params))
     }
 }
 
@@ -39,27 +33,25 @@ class App extends React.Component{
 
     render(){
         console.log('render app, props:', this.props)
-        const { searchField, onSearchChange, robots, isPending, onRequestJokes, joke } = this.props;
-        const filtered = robots.filter((robot) => {
-            return robot.name.toLowerCase().includes(searchField.toLowerCase());
-        })
-        const user = filtered[Math.floor(Math.random() * filtered.length)];
+        const { robots, isPending, onRequestWisdom, wisdom } = this.props;
+        if(robots.length && !user)
+            user = robots[Math.floor(Math.random() * robots.length)];
         return (isPending || !user) ?
             <h1 className='tc'>Loading...</h1> :
             (
                 <div className='tc'>
                     <h1 className='f1'>API-bar</h1>
                     <ErrorBoundry>
-                    <Card 
+                    <Barman 
                         key={user.id} 
                         id={user.id} 
                         name={user.name}
-                        joke={joke} 
+                        wisdom={wisdom} 
                         />
                     </ErrorBoundry>
                     <Buttons
-                        buttons={buttons}
-                        onClick={onRequestJokes} 
+                        buttons={topics}
+                        onClick={onRequestWisdom} 
                     />                        
                     
                 </div>
