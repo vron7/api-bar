@@ -46,7 +46,7 @@ class App extends React.Component{
                     <h1 className='f1'>API-bar</h1>
                     <div className="tc bg-light-green br3 pa3 ma2 bw2 shadow-5">
                         <ErrorBoundry>
-                        <SpeechBubble text={wisdom} name={user.name} isWaiting={isWaiting} />
+                        <SpeechBubble content={wisdom} name={user.name} isWaiting={isWaiting} />
                         <Barman id={user.id} />
                         </ErrorBoundry>
                     </div>   
