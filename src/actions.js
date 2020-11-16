@@ -31,7 +31,6 @@ export const requestUsers = () => (dispatch) => {
 }
 
 export const requestWisdom = (topic) => (dispatch) => {
-    console.log('dbg req wisdom', topic);
     dispatch({type: REQUEST_TOPIC_PENDING});
     dispatch({type: 'RESOURCE_LOADING'});
     fetch(getUriForTopic(topic))

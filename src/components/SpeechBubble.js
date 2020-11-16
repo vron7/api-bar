@@ -4,14 +4,7 @@ import {wisdomFormat} from '../topics';
 
 let SHOW_LOADER = false;
 const SpeechBubble = ({content = {}, isWaiting, isLoaded, onResourceLoaded}) => { //destructing
-    let className = "bubble chat-box br4 pa3 bg-white shadow-3"
-    console.log("dbg bubble render --------------------> START");  
-    console.log("dbg bubble render CONTENT:", content, content.data);  
-    console.log("dbg bubble render FORMAT:", content.format );  
-    console.log("dbg bubble render ISWAITING:",  isWaiting );  
-    console.log("dbg bubble render ISLOADED:", isLoaded );  
-    console.log("dbg bubble render --------------------> END"); 
-    
+    let className = "bubble chat-box br4 pa3 bg-white shadow-3"   
 
     if(content.data){
         switch (content.format){
