@@ -7,14 +7,14 @@ import thunkMiddleware from 'redux-thunk'
 import './index.css';
 import App from './containers/App'
 import * as serviceWorker from './serviceWorker';
-import { requestWisdom, requestRobots } from './reducers'
+import { requestWisdom, requestUsers, resourceLoaded } from './reducers'
 import 'tachyons';
 
 // create logging middleware
 const logger = createLogger();
 
 //combine reducers
-const rootReducer = combineReducers({ requestWisdom, requestRobots})
+const rootReducer = combineReducers({ requestWisdom, requestUsers, resourceLoaded})
 
 // store holds state tree of the application
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));

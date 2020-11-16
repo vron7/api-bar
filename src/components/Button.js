@@ -1,5 +1,5 @@
 import React from 'react';
-const colors = ["light-purple", "gold", "hot-pink", "orange"];
+const colors = ["light-purple", "gold", "hot-pink", "orange", 'green', 'dark-gray'];
 
 const Button = ({idx, id, name, getSomething}) => {
     const bgColor = colors[idx] ? colors[idx] : "hot-pink"

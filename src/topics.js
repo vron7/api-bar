@@ -1,9 +1,12 @@
+import userEvent from "@testing-library/user-event";
+
 const enumTopics = {
     JOKE: 'joke',
     QUOTE: 'quote',
     FACTS: 'facts',
     CATS: 'cats',
-    CAT_IMG: 'cat_img'
+    CAT_IMG: 'cat_img',
+    COVID: 'covid'
 
 }
 export const topics = [
@@ -13,7 +16,7 @@ export const topics = [
     },
     {
         id: enumTopics.QUOTE,
-        name:"Programming"
+        name:"Dev"
     },
     {
         id: enumTopics.FACTS,
@@ -25,7 +28,11 @@ export const topics = [
     },
     {
         id: enumTopics.CAT_IMG,
-        name: 'Cat image'
+        name: 'Cat pic'
+    },
+    {
+        id: enumTopics.COVID,
+        name: 'Covid'
     }
 ];
 
@@ -48,6 +55,9 @@ export const getUriForTopic = (topic) => {
         case enumTopics.CAT_IMG:
             return 'https://aws.random.cat/meow';
 
+        case enumTopics.COVID:
+            return `https://api.covid19tracking.narrativa.com/api/${getCurrentDate()}/country/estonia`;
+
         default:
             return '';
     }
@@ -55,11 +65,36 @@ export const getUriForTopic = (topic) => {
 
 export const wisdomFormat = {
     TEXT: 'text',
-    IMAGE: 'image'
+    IMAGE: 'image',
+    INITIAL: 'initial',
+    COVID_TEXT: 'covid-text',
 }
+
+export const initTopic = (name) => {
+    const data = name;
+    const format = wisdomFormat.INITIAL 
+    return new Wisdom(data, format)
+}
+
 function Wisdom (data, format) {
     this.data = data;
     this.format = format;
+}
+function getCurrentDate() {
+    var dt = new Date();
+    return dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + (dt.getDate()) ;
+
+}
+function convertCovidData (data){
+    console.log('dbg covid', getCurrentDate(), data)
+    if(data.error)
+        return 'I apologize, there is no data for today yet, try again later...'
+    const today = data.dates[getCurrentDate()].countries.Estonia    
+    return {
+        new:today.today_new_confirmed, 
+        died: today.today_new_deaths,
+        recovered:today.today_new_recovered 
+    }
 }
 
 export const convertDataToWisdom = (topic, data) => {
@@ -81,6 +116,9 @@ export const convertDataToWisdom = (topic, data) => {
 
         case enumTopics.CAT_IMG:
             return new Wisdom(data.file, wisdomFormat.IMAGE);
+
+        case enumTopics.COVID:
+            return new Wisdom(convertCovidData(data), wisdomFormat.COVID_TEXT);
 
         default:
             return '';

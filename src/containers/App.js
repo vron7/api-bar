@@ -6,24 +6,25 @@ import SpeechBubble from '../components/SpeechBubble';
 import ErrorBoundry from '../components/ErrorBoundry'
 import './App.css'
 import {topics} from '../topics'
-import { requestRobots, requestJokes, requestWisdom } from '../actions'
-let user;
+import { requestUsers, requestWisdom } from '../actions'
 
 const mapStateToProps = state => {
     console.log('dbg mapStateToProps', state)
     return {
-        robots: state.requestRobots.robots,
-        isPending: state.requestRobots.isPending,
-        error: state.requestRobots.error,
+        user: state.requestUsers.user,
+        isPending: state.requestUsers.isPending,
+        error: state.requestUsers.error,
         wisdom: state.requestWisdom.wisdom,
         isWaiting: state.requestWisdom.isWaiting,
+        isLoaded: state.resourceLoaded.isLoaded
 
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        onRequestRobots: () => dispatch(requestRobots()),
-        onRequestWisdom: params => dispatch(requestWisdom(params))
+        onRequestUsers: () => dispatch(requestUsers()),
+        onRequestWisdom: params => dispatch(requestWisdom(params)),
+        onResourceLoaded: () => dispatch({type: 'RESOURCE_LOADED'})
     }
 }
 
@@ -31,14 +32,12 @@ const mapDispatchToProps = (dispatch) => {
 class App extends React.Component{
 
     componentDidMount() {
-        this.props.onRequestRobots()        
+        this.props.onRequestUsers()        
     }
 
+
     render(){
-        console.log('render app, props:', this.props)
-        const { robots, isPending, onRequestWisdom, wisdom, isWaiting } = this.props;
-        if(robots.length && !user)
-            user = robots[Math.floor(Math.random() * robots.length)];        
+        const { user, isPending, onRequestWisdom, wisdom, isWaiting, onResourceLoaded, isLoaded } = this.props;
         return (isPending || !user) ?
             <h1 className='tc'>Loading...</h1> :
             (
@@ -46,7 +45,7 @@ class App extends React.Component{
                     <h1 className='f1'>API-bar</h1>
                     <div className="tc bg-light-green br3 pa3 ma2 bw2 shadow-5">
                         <ErrorBoundry>
-                        <SpeechBubble content={wisdom} name={user.name} isWaiting={isWaiting} />
+                        <SpeechBubble content={wisdom} isWaiting={isWaiting} isLoaded={isLoaded} onResourceLoaded={onResourceLoaded} />
                         <Barman id={user.id} />
                         </ErrorBoundry>
                     </div>   

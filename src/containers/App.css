@@ -19,6 +19,85 @@ h1{
   border-radius: 20px;
 }
 
+.bubble-img-container{
+  position: relative;
+  min-height: 180px;
+}
+.swing-in-bottom-fwd {
+	-webkit-animation: swing-in-bottom-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-bottom-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+@-webkit-keyframes swing-in-bottom-fwd {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 1;
+  }
+}
+@keyframes swing-in-bottom-fwd {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 1;
+  }
+}
+
+.swing-out-bottom-bck {
+	-webkit-animation: swing-out-bottom-bck 0.35s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+	        animation: swing-out-bottom-bck 0.35s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+}
+@-webkit-keyframes swing-out-bottom-bck {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 0;
+  }
+}
+@keyframes swing-out-bottom-bck {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 0;
+  }
+}
+
+
 @-webkit-keyframes scale-up-center {
     0% {
       -webkit-transform: scale(0.8);
@@ -86,6 +165,13 @@ h1{
     box-shadow: 0px 20px 0px darkgray;
     margin-bottom: 20px;
     border: 2px solid darkseagreen;
+    
+
+}
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 .beer{
     position: absolute;
@@ -101,8 +187,8 @@ h1{
     margin-left: -80px;
     left:50%;
     top:-50%;
-
 }
+
 @media only screen and (orientation: portrait) and (min-aspect-ratio: 375/667){
   h1.f1 {
     font-size:2rem;
@@ -115,4 +201,35 @@ h1{
   .barman{
     max-width: 50%;
   }
+}
+
+
+.loader-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); 
+  visibility: hidden;
+}
+.loader-container.show{
+  visibility: visible;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+  margin:0 auto;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid yellow;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
