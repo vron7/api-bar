@@ -82,11 +82,14 @@ function Wisdom (data, format) {
 }
 function getCurrentDate() {
     var dt = new Date();
-    return dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + (dt.getDate()) ;
+    return dt.getFullYear() + "-" + 
+        ('0' + (dt.getMonth() + 1)).slice(-2) + "-" + 
+        ('0' + dt.getDate()).slice(-2);
 
 }
+
 function convertCovidData (data){
-    console.log('dbg covid', getCurrentDate(), data)
+    console.log('dbg covid data', data, getCurrentDate())
     if(data.error)
         return 'I apologize, there is no data for today yet, try again later...'
     const today = data.dates[getCurrentDate()].countries.Estonia    
